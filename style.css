@@ -1,7 +1,122 @@
 /* elements */
-/* classes */
-.gameArea{
-    background-color: lightgray;
-    max-width: 800px;
+body {
+    background-color: azure;
+    color: white;
+    
 }
+/* classes */
+.container {
+    background-color: rgb(168, 168, 168);
+    width: 800px;
+    height: 600px;
+    margin: auto;
+     
+}
+.opponentCardsWonStack {
+    border: solid;
+    width: 100px;
+    height: 150px;
+    border-radius: 3px;
+    font-size: 60% ;
+    text-align: center;
+    color: rgb(108, 108, 108);
+    background-color: beige; 
+
+}
+.opponentDeck {
+    border: solid;
+    width: 100px;
+    height: 150px;
+    border-radius: 3px;
+    font-size: 60% ;
+    text-align: center;
+    color: rgb(108, 108, 108);
+    background-color: beige; 
+
+}
+.opponentCardsWonTitle {
+    width: 100;
+    height: 25;
+
+}
+.opponentCardsWonCount {
+    width: 100;
+    height: 25;
+
+}
+.opponentWarAnte {
+    border: solid;
+    width: 100px;
+    height: 150px;
+    border-radius: 3px;
+    font-size: 60% ;
+    text-align: center;
+    color: rgb(108, 108, 108);
+    background-color: beige;
+
+}
+.opponentFaceUpCard {
+    border: solid;
+    width: 100px;
+    height: 150px;
+    border-radius: 3px;
+    font-size: 60% ;
+    text-align: center;
+    color: rgb(108, 108, 108);
+    background-color: beige;
+
+}
+.playerFaceUpCard {
+    border: solid;
+    width: 100px;
+    height: 150px;
+    border-radius: 3px;
+    font-size: 60% ;
+    text-align: center;
+    color: rgb(108, 108, 108);
+    background-color: beige;
+
+}
+.playerWarAnte {
+    border: solid;
+    width: 100px;
+    height: 150px;
+    border-radius: 3px;
+    font-size: 60% ;
+    text-align: center;
+    color: rgb(108, 108, 108);
+    background-color: beige;
+    
+}
+.playerDeck {
+    border: solid;
+    width: 100px;
+    height: 150px;
+    border-radius: 3px;
+    font-size: 60% ;
+    text-align: center;
+    color: rgb(108, 108, 108);
+    background-color: beige;
+}
+.playerCardsWonTitle {
+    width: 100;
+    height: 25;
+    
+}
+.playerCardsWonCount {
+    width: 100;
+    height: 25;
+    
+}
+.playerCardsWonStack {
+    border: solid;
+    width: 100px;
+    height: 150px;
+    border-radius: 3px;
+    font-size: 60% ;
+    text-align: center;
+    color: rgb(108, 108, 108);
+    background-color: beige;
+}
+
 /* ids */
