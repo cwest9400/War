@@ -5,11 +5,14 @@ body {
     
 }
 /* classes */
-.container {
+.playArea {
     background-color: rgb(168, 168, 168);
     width: 800px;
     height: 600px;
     margin: auto;
+    display: grid;
+    grid-template-columns: 100px 100px 100px 100px 100px 100px 100px ;
+    grid-template-rows: auto 150px 50px auto 150px auto 50px 150px auto;
      
 }
 .opponentCardsWonStack {
@@ -20,7 +23,11 @@ body {
     font-size: 60% ;
     text-align: center;
     color: rgb(108, 108, 108);
-    background-color: beige; 
+    background-color: beige;
+    grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 1;
+  grid-row-end: 2;
 
 }
 .opponentDeck {
@@ -86,7 +93,7 @@ body {
     text-align: center;
     color: rgb(108, 108, 108);
     background-color: beige;
-    
+
 }
 .playerDeck {
     border: solid;
