@@ -33,6 +33,7 @@ let opponent = {
     deck: [],
     faceUpCard: "",
     cardsWon: [],
+    ante: [],
 }
 
 let player = {
@@ -40,6 +41,7 @@ let player = {
     deck: [],
     faceUpCard: "6666",
     cardsWon: [],
+    ante: [],
 }
 shuffleUp(shuffledDeck)
 for (i = 0; i < shuffledDeck.length; i++) {
@@ -76,7 +78,11 @@ flipCard()
 function cardCompare() {
     let playerCard = parseInt(player.faceUpCard)
     let opponentCard = parseInt(opponent.faceUpCard)
-    if (playerCard > opponentCard) {
+    if (playerCard == opponentCard) {
+        console.log("WAAARRR!!")
+        //ante 3 cards from top of (end) of player.deck and then invoke flipCard() and cardCompare()
+
+    } else if (playerCard > opponentCard) {
         player.cardsWon.push(player.faceUpCard)
         player.cardsWon.push(opponent.faceUpCard)
         console.log("player wins")
@@ -90,4 +96,8 @@ cardCompare()
 console.log(player.cardsWon)
 console.log(opponent.cardsWon)
 
-
+//6. comparison tie trigger "war!"
+function warAnte() {
+    player.ante = player.deck.splice(player.deck - 1, 3)
+    opponent.ante = opponent.deck.splice(opponent.deck - 1, 3)
+}
