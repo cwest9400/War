@@ -3,8 +3,8 @@
 //make array of suits(hearts,clubs,spades,diamonds) & card values (2 thru Ace)
 //loop through and push to array (deck)
 function makeDeck() {
-    let cardType = ['spade', 'club', 'diamond', 'heart']
-    let cards = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A']
+    let cardType = [' spade', ' club', ' diamond', ' heart']
+    let cards = ['2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14']
     let deck = []
     for (i = 0; i < cardType.length; i++) {
         for (j = 0; j < cards.length; j++) {
@@ -32,12 +32,14 @@ let opponent = {
     name: "Opponent",
     deck: [],
     faceUpCard: "",
+    cardsWon: [],
 }
 
 let player = {
     name: "player",
     deck: [],
     faceUpCard: "6666",
+    cardsWon: [],
 }
 shuffleUp(shuffledDeck)
 for (i = 0; i < shuffledDeck.length; i++) {
@@ -57,13 +59,29 @@ console.log(opponent.deck)
 function flipCard() {
     
     player.faceUpCard = player.deck[player.deck.length - 1]
+    opponent.faceUpCard = opponent.deck[opponent.deck.length - 1]
     player.deck.pop()
+    opponent.deck.pop()
     // opponent.faceUpCard = opponent.deck.length - 1
     console.log(player.faceUpCard)
     console.log(player.deck)
+    console.log(opponent.faceUpCard)
+    console.log(opponent.deck)
     // console.log(opponent.faceUpCard)
 }
 flipCard()
 
 //5. compare cards -
 //make card rank object? need to rank every card (j==10,Q==11,K==12,A==13)
+function cardCompare() {
+    let playerCard = parseInt(player.faceUpCard)
+    let opponentCard = parseInt(opponent.faceUpCard)
+    console.log(playerCard)
+    console.log(opponentCard)
+} 
+cardCompare()
+
+
+// if(player.faceUpCard > opponent.faceUpCard) {
+
+// }
