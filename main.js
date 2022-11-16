@@ -31,7 +31,7 @@ let shuffledDeck = makeDeck()
 let opponent = {
     name: "Opponent",
     deck: [],
-    faceUpCard: "",
+    faceUpCard: "9",
     cardsWon: [],
     ante: [],
 }
@@ -39,7 +39,7 @@ let opponent = {
 let player = {
     name: "player",
     deck: [],
-    faceUpCard: "",
+    faceUpCard: "9",
     cardsWon: [],
     ante: [],
 }
@@ -71,8 +71,30 @@ function flipCard() {
     console.log(opponent.deck)
     // console.log(opponent.faceUpCard)
 }
-flipCard()
+// flipCard()
 
+function playerWins() {
+    player.cardsWon.push(player.faceUpCard)
+    player.cardsWon.push(opponent.faceUpCard)
+    player.cardsWon.push(player.ante)
+    player.cardsWon.push(opponent.ante)
+    console.log("player wins")
+
+}
+function opponentWins() {
+    opponent.cardsWon.push(player.faceUpCard)
+    opponent.cardsWon.push(opponent.faceUpCard)
+    opponent.cardsWon.push(player.ante)
+    opponent.cardsWon.push(opponent.ante)
+    console.log("opponent wins")
+
+}
+
+function war(){
+    warAnte()
+    flipCard()
+    cardCompare()
+}
 //5. compare cards -
 //make card rank object? need to rank every card (j==10,Q==11,K==12,A==13)
 function cardCompare() {
@@ -80,23 +102,11 @@ function cardCompare() {
     let opponentCard = parseInt(opponent.faceUpCard)
     if (playerCard == opponentCard) {
         console.log("WAAARRR!!")
-        warAnte()
-        flipCard()
-        cardCompare()
-
-
+        war()
     } else if (playerCard > opponentCard) {
-        player.cardsWon.push(player.faceUpCard)
-        player.cardsWon.push(opponent.faceUpCard)
-        player.cardsWon.push(player.ante)
-        player.cardsWon.push(opponent.ante)
-        console.log("player wins")
+        playerWins()
     } else {
-        opponent.cardsWon.push(player.faceUpCard)
-        opponent.cardsWon.push(opponent.faceUpCard)
-        opponent.cardsWon.push(player.ante)
-        opponent.cardsWon.push(opponent.ante)
-        console.log("opponent wins")
+        opponentWins()
     }
     return
 }
