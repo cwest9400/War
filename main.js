@@ -39,7 +39,7 @@ let opponent = {
 let player = {
     name: "player",
     deck: [],
-    faceUpCard: "6666",
+    faceUpCard: "",
     cardsWon: [],
     ante: [],
 }
@@ -65,9 +65,9 @@ function flipCard() {
     player.deck.pop()
     opponent.deck.pop()
     // opponent.faceUpCard = opponent.deck.length - 1
-    console.log(player.faceUpCard)
+    console.log("player played: " + player.faceUpCard)
     console.log(player.deck)
-    console.log(opponent.faceUpCard)
+    console.log("opponent played: " + opponent.faceUpCard)
     console.log(opponent.deck)
     // console.log(opponent.faceUpCard)
 }
@@ -80,17 +80,25 @@ function cardCompare() {
     let opponentCard = parseInt(opponent.faceUpCard)
     if (playerCard == opponentCard) {
         console.log("WAAARRR!!")
-        //ante 3 cards from top of (end) of player.deck and then invoke flipCard() and cardCompare()
+        warAnte()
+        flipCard()
+        cardCompare()
+
 
     } else if (playerCard > opponentCard) {
         player.cardsWon.push(player.faceUpCard)
         player.cardsWon.push(opponent.faceUpCard)
+        player.cardsWon.push(player.ante)
+        player.cardsWon.push(opponent.ante)
         console.log("player wins")
     } else {
         opponent.cardsWon.push(player.faceUpCard)
         opponent.cardsWon.push(opponent.faceUpCard)
+        opponent.cardsWon.push(player.ante)
+        opponent.cardsWon.push(opponent.ante)
         console.log("opponent wins")
     }
+    return
 }
 cardCompare()
 console.log(player.cardsWon)
@@ -98,6 +106,10 @@ console.log(opponent.cardsWon)
 
 //6. comparison tie trigger "war!"
 function warAnte() {
-    player.ante = player.deck.splice(player.deck - 1, 3)
-    opponent.ante = opponent.deck.splice(opponent.deck - 1, 3)
+    player.ante = player.deck.splice(player.deck.length - 3, 3)
+    opponent.ante = opponent.deck.splice(opponent.deck.length - 3, 3)
+    console.log(`player ante: ${player.ante}, opponent ante: ${opponent.ante}`)
+    return
 }
+console.log(`player cards won: ${player.cardsWon}`)
+console.log(`opponent cards won: ${opponent.cardsWon}`)
