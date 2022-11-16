@@ -31,7 +31,7 @@ let shuffledDeck = makeDeck()
 let opponent = {
     name: "Opponent",
     deck: [],
-    faceUpCard: "9",
+    faceUpCard: "",
     cardsWon: [],
     ante: [],
 }
@@ -39,7 +39,7 @@ let opponent = {
 let player = {
     name: "player",
     deck: [],
-    faceUpCard: "9",
+    faceUpCard: "",
     cardsWon: [],
     ante: [],
 }
@@ -71,7 +71,7 @@ function flipCard() {
     console.log(opponent.deck)
     // console.log(opponent.faceUpCard)
 }
-// flipCard()
+flipCard()
 
 function playerWins() {
     player.cardsWon.push(player.faceUpCard)
@@ -123,3 +123,11 @@ function warAnte() {
 }
 console.log(`player cards won: ${player.cardsWon}`)
 console.log(`opponent cards won: ${opponent.cardsWon}`)
+
+//7. how to not push empty warAnte strings - if?
+//8. when deck runs out - shuffle cardsWon into deck
+
+//9. identify dom elements & listeners
+//      1. shuffle up/start
+//      2. flip
+//      3. ante        
