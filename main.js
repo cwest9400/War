@@ -31,13 +31,13 @@ let shuffledDeck = makeDeck()
 let opponent = {
     name: "Opponent",
     deck: [],
-    FaceUpCard: "",
+    faceUpCard: "",
 }
 
 let player = {
     name: "player",
     deck: [],
-    FaceUpCard: "",
+    faceUpCard: "6666",
 }
 shuffleUp(shuffledDeck)
 for (i = 0; i < shuffledDeck.length; i++) {
@@ -55,10 +55,15 @@ console.log(opponent.deck)
 //pop card from top of player deck array
 //push to center object array
 function flipCard() {
-    player.FaceUpCard.push(player.deck[0])
-    opponent.FaceUpCard.push(opponent.deck[0])
-
+    
+    player.faceUpCard = player.deck[player.deck.length - 1]
+    player.deck.pop()
+    // opponent.faceUpCard = opponent.deck.length - 1
+    console.log(player.faceUpCard)
+    console.log(player.deck)
+    // console.log(opponent.faceUpCard)
 }
-console.log(playerFlipcard)
+flipCard()
+
 //5. compare cards -
 //make card rank object? need to rank every card (j==10,Q==11,K==12,A==13)
