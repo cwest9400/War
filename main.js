@@ -30,27 +30,35 @@ let shuffledDeck = makeDeck()
 //define players - object?
 let opponent = {
     name: "Opponent",
-    opponentDeck: [],
+    deck: [],
+    FaceUpCard: "",
 }
 
 let player = {
     name: "player",
-    playerDeck:[],
+    deck: [],
+    FaceUpCard: "",
 }
 shuffleUp(shuffledDeck)
-for (i=0; i < shuffledDeck.length; i++){
-    if (i < shuffledDeck.length/2) {
-        player.playerDeck.push(shuffledDeck[i])
+for (i = 0; i < shuffledDeck.length; i++) {
+    if (i < shuffledDeck.length / 2) {
+        player.deck.push(shuffledDeck[i])
     } else {
-        opponent.opponentDeck.push(shuffledDeck[i])
+        opponent.deck.push(shuffledDeck[i])
     }
 }
-console.log(player.playerDeck)
-console.log(opponent.opponentDeck)
+console.log(player.deck)
+console.log(opponent.deck)
 
 
 //4. flip card - 
 //pop card from top of player deck array
 //push to center object array
+function flipCard() {
+    player.FaceUpCard.push(player.deck[0])
+    opponent.FaceUpCard.push(opponent.deck[0])
+
+}
+console.log(playerFlipcard)
 //5. compare cards -
 //make card rank object? need to rank every card (j==10,Q==11,K==12,A==13)
