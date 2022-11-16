@@ -57,7 +57,7 @@ console.log(opponent.deck)
 //pop card from top of player deck array
 //push to center object array
 function flipCard() {
-    
+
     player.faceUpCard = player.deck[player.deck.length - 1]
     opponent.faceUpCard = opponent.deck[opponent.deck.length - 1]
     player.deck.pop()
@@ -76,12 +76,18 @@ flipCard()
 function cardCompare() {
     let playerCard = parseInt(player.faceUpCard)
     let opponentCard = parseInt(opponent.faceUpCard)
-    console.log(playerCard)
-    console.log(opponentCard)
-} 
+    if (playerCard > opponentCard) {
+        player.cardsWon.push(player.faceUpCard)
+        player.cardsWon.push(opponent.faceUpCard)
+        console.log("player wins")
+    } else {
+        opponent.cardsWon.push(player.faceUpCard)
+        opponent.cardsWon.push(opponent.faceUpCard)
+        console.log("opponent wins")
+    }
+}
 cardCompare()
+console.log(player.cardsWon)
+console.log(opponent.cardsWon)
 
 
-// if(player.faceUpCard > opponent.faceUpCard) {
-
-// }
