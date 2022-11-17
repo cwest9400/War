@@ -2,9 +2,16 @@
 //create a 52 card deck - 4 suits X 12 card types
 //make array of suits(hearts,clubs,spades,diamonds) & card values (2 thru Ace)
 //loop through and push to array (deck)
+const startButton = document.querySelector('.startButton')
+const FlipButton = document.querySelector('.flip')
+const AnteButton = document.querySelector('.ante')
+
+addEventListener
 function makeDeck() {
-    let cardType = [' spade', ' club', ' diamond', ' heart']
-    let cards = ['2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14']
+    // let cardType = [' spade', ' club', ' diamond', ' heart']
+    // let cards = ['2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14']
+    let cardType = [' heart']
+    let cards = ['2', '3', '4', '5']
     let deck = []
     for (i = 0; i < cardType.length; i++) {
         for (j = 0; j < cards.length; j++) {
@@ -40,7 +47,7 @@ let player = {
     name: "player",
     deck: [],
     faceUpCard: "",
-    cardsWon: [],
+    cardsWon: ['4 spade'],
     ante: [],
 }
 shuffleUp(shuffledDeck)
@@ -64,7 +71,9 @@ function flipCard() {
     opponent.faceUpCard = opponent.deck[opponent.deck.length - 1]
     player.deck.pop()
     opponent.deck.pop()
-    // opponent.faceUpCard = opponent.deck.length - 1
+    remakeDeckfromCardsWon()
+
+
     console.log("player played: " + player.faceUpCard)
     console.log(player.deck)
     console.log("opponent played: " + opponent.faceUpCard)
@@ -76,27 +85,53 @@ flipCard()
 function playerWins() {
     player.cardsWon.push(player.faceUpCard)
     player.cardsWon.push(opponent.faceUpCard)
-    player.cardsWon.push(player.ante)
-    player.cardsWon.push(opponent.ante)
+
     console.log("player wins")
 
 }
 function opponentWins() {
     opponent.cardsWon.push(player.faceUpCard)
     opponent.cardsWon.push(opponent.faceUpCard)
-    opponent.cardsWon.push(player.ante)
-    opponent.cardsWon.push(opponent.ante)
+
     console.log("opponent wins")
 
 }
+function playerWinsWar() {
+    player.cardsWon.push(player.ante)
+    player.cardsWon.push(opponent.ante)
 
-function war(){
+}
+function opponentWinsWar() {
+    opponent.cardsWon.push(player.ante)
+    opponent.cardsWon.push(opponent.ante)
+
+}
+function war() {
     warAnte()
     flipCard()
-    cardCompare()
+    warCardCompare()
 }
 //5. compare cards -
 //make card rank object? need to rank every card (j==10,Q==11,K==12,A==13)
+function warCardCompare() {
+    let playerCard = parseInt(player.faceUpCard)
+    let opponentCard = parseInt(opponent.faceUpCard)
+    if (playerCard == opponentCard) {
+        console.log("WAAARRR!!")
+        war()
+    } else if (playerCard > opponentCard) {
+        playerWinsWar()
+    } else {
+        opponentWinsWar()
+    }
+    return
+}
+
+
+
+
+
+
 function cardCompare() {
     let playerCard = parseInt(player.faceUpCard)
     let opponentCard = parseInt(opponent.faceUpCard)
@@ -118,14 +153,38 @@ console.log(opponent.cardsWon)
 function warAnte() {
     player.ante = player.deck.splice(player.deck.length - 3, 3)
     opponent.ante = opponent.deck.splice(opponent.deck.length - 3, 3)
+    remakeDeckfromCardsWon()
     console.log(`player ante: ${player.ante}, opponent ante: ${opponent.ante}`)
     return
 }
 console.log(`player cards won: ${player.cardsWon}`)
 console.log(`opponent cards won: ${opponent.cardsWon}`)
 
-//7. how to not push empty warAnte strings - if?
+//XXXXXXX7. how to not push empty warAnte strings - if?
+
 //8. when deck runs out - shuffle cardsWon into deck
+function remakeDeckfromCardsWon() {
+    if (player.deck <= 0) {
+        player.deck.push(...player.cardsWon)
+    }
+    if (opponent.deck <= 0) {
+        opponent.deck.push(...opponent.cardsWon)
+    }
+}
+
+console.log("current deck: " + player.deck)
+//win condition
+function winCondition() {
+    if (player.deck + player.cardsWon <= 0) {
+        console.log("Opponent Wins!")
+    } else {
+        console.log("Player Wins!")
+    }
+}
+
+
+
+
 
 //9. identify dom elements & listeners
 //      1. shuffle up/start
