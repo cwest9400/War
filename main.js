@@ -6,38 +6,8 @@ const startButton = document.querySelector('.startButton')
 const flipButton = document.querySelector('.flip')
 const anteButton = document.querySelector('.ante')
 
-startButton.addEventListener('click', makeDeck)
-flipButton.addEventListener('click', flipCard)
-
-function makeDeck() {
-    let cardType = [' spade', ' club', ' diamond', ' heart']
-    let cards = ['2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14']
-    let deck = []
-    for (i = 0; i < cardType.length; i++) {
-        for (j = 0; j < cards.length; j++) {
-            deck.push(cards[j] + cardType[i])
-        }
-    }
-    return (deck)
-}
-
-//2.shuffle deck -
-//loop through deck and assign random positions?
-function shuffleUp(deck) {
-    for (i = 0; i < deck.length; i++) {
-        let randomCard = deck[i]
-        let randomIndex = Math.floor(Math.random() * deck.length)
-        deck[i] = deck[randomIndex]
-        deck[randomIndex] = randomCard
-    }
-    // return
-}
-// shuffleUp()
-let mainDeck = makeDeck()
 
 
-//3. split deck push half to new array for each player?
-//define players - object?
 let opponent = {
     name: "Opponent",
     deck: [],
@@ -53,16 +23,45 @@ let player = {
     cardsWon: [],
     ante: [],
 }
-shuffleUp(mainDeck)
-for (i = 0; i < mainDeck.length; i++) {
-    if (i < mainDeck.length / 2) {
-        player.deck.push(mainDeck[i])
-    } else {
-        opponent.deck.push(mainDeck[i])
+
+function makeDeck() {
+    let cardType = [' spade', ' club', ' diamond', ' heart']
+    let cards = ['2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14']
+    let deck = []
+    for (i = 0; i < cardType.length; i++) {
+        for (j = 0; j < cards.length; j++) {
+            deck.push(cards[j] + cardType[i])
+        }
     }
+    return (deck)
 }
-console.log(player.deck)
-console.log(opponent.deck)
+
+//2.shuffle deck - loop through deck and assign random positions
+function shuffleUp(deck) {
+    for (i = 0; i < deck.length; i++) {
+        let randomCard = deck[i]
+        let randomIndex = Math.floor(Math.random() * deck.length)
+        deck[i] = deck[randomIndex]
+        deck[randomIndex] = randomCard
+    }
+
+}
+
+let mainDeck = makeDeck()
+
+//3. split deck push half to new array for each player
+shuffleUp(mainDeck)
+function splitShuffledMainDeck() {
+    for (i = 0; i < mainDeck.length; i++) {
+        if (i < mainDeck.length / 2) {
+            player.deck.push(mainDeck[i])
+        } else {
+            opponent.deck.push(mainDeck[i])
+        }
+    }
+    console.log(player.deck)
+    console.log(opponent.deck)
+}
 
 
 //4. flip card - 
@@ -188,6 +187,6 @@ function winCondition() {
 
 
 //9. identify dom elements & listeners
-//      1. shuffle up/start
-//      2. flip
-//      3. ante        
+startButton.addEventListener('click', shuffleUp(mainDeck))
+startButton.addEventListener('click', splitShuffledMainDeck)
+flipButton.addEventListener('click', flipCard)
