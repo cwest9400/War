@@ -3,15 +3,15 @@
 //make array of suits(hearts,clubs,spades,diamonds) & card values (2 thru Ace)
 //loop through and push to array (deck)
 const startButton = document.querySelector('.startButton')
-const FlipButton = document.querySelector('.flip')
-const AnteButton = document.querySelector('.ante')
+const flipButton = document.querySelector('.flip')
+const anteButton = document.querySelector('.ante')
 
-addEventListener
+startButton.addEventListener('click', makeDeck)
+flipButton.addEventListener('click', flipCard)
+
 function makeDeck() {
-    // let cardType = [' spade', ' club', ' diamond', ' heart']
-    // let cards = ['2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14']
-    let cardType = [' heart']
-    let cards = ['2', '3', '4', '5']
+    let cardType = [' spade', ' club', ' diamond', ' heart']
+    let cards = ['2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14']
     let deck = []
     for (i = 0; i < cardType.length; i++) {
         for (j = 0; j < cards.length; j++) {
@@ -20,6 +20,7 @@ function makeDeck() {
     }
     return (deck)
 }
+
 //2.shuffle deck -
 //loop through deck and assign random positions?
 function shuffleUp(deck) {
@@ -29,8 +30,10 @@ function shuffleUp(deck) {
         deck[i] = deck[randomIndex]
         deck[randomIndex] = randomCard
     }
+    // return
 }
-let shuffledDeck = makeDeck()
+// shuffleUp()
+let mainDeck = makeDeck()
 
 
 //3. split deck push half to new array for each player?
@@ -47,15 +50,15 @@ let player = {
     name: "player",
     deck: [],
     faceUpCard: "",
-    cardsWon: ['4 spade'],
+    cardsWon: [],
     ante: [],
 }
-shuffleUp(shuffledDeck)
-for (i = 0; i < shuffledDeck.length; i++) {
-    if (i < shuffledDeck.length / 2) {
-        player.deck.push(shuffledDeck[i])
+shuffleUp(mainDeck)
+for (i = 0; i < mainDeck.length; i++) {
+    if (i < mainDeck.length / 2) {
+        player.deck.push(mainDeck[i])
     } else {
-        opponent.deck.push(shuffledDeck[i])
+        opponent.deck.push(mainDeck[i])
     }
 }
 console.log(player.deck)
@@ -80,19 +83,17 @@ function flipCard() {
     console.log(opponent.deck)
     // console.log(opponent.faceUpCard)
 }
-flipCard()
+// flipCard()
 
 function playerWins() {
     player.cardsWon.push(player.faceUpCard)
     player.cardsWon.push(opponent.faceUpCard)
-
     console.log("player wins")
 
 }
 function opponentWins() {
     opponent.cardsWon.push(player.faceUpCard)
     opponent.cardsWon.push(opponent.faceUpCard)
-
     console.log("opponent wins")
 
 }
