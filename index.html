@@ -14,43 +14,46 @@
     <button class="startButton">start</button>
     <button class="flip">Flip</button>
     <button class="ante">Ante</button>
-    <div class="pDeckDisplay"></div>
-    <div class="oDeckDisplay"></div>
+    <div class="outcome">Battle Message: <span id="compareOutcome"></span></div>
+    <!-- <div class="oDeckDisplay"></div> -->
+
 
     <div class="container">
         <div class="playArea">
 
             <div class="opponentCardsWonStack">.opponentCardsWonStack
-            </div>
-            <div class="opponentCardsWonTitle">OP Cards Won:
+                <p>Cards won:</p>
+                <p><span id="opponentCardsWon">00</span></p>
             </div>
 
-            <div class="opponentCardsWonCount">
-                <p>00</p>
-            </div>
+
+
             <div class="opponentDeck">.opponentDeck
                 <p>Deck size:</p>
                 <p><span id="opponentDeckSize">00</span></p>
             </div>
             <div class="opponentWarAnte">.opponentWarAnte
+                <p>Ante count:</p>
+                <p><span id="opponentWarAnteCount">00</span></p>
             </div>
             <div class="opponentFaceUpCard">.opponentFaceUpCard
             </div>
             <div class="playerFaceUpCard">.playerFaceUpCard
             </div>
             <div class="playerWarAnte">.playerWarAnte
+                <p>Ante count:</p>
+                <p><span id="playerWarAnteCount">00</span></p>
             </div>
             <div class="flipAnteButtonContainer"></div>
             <div class="playerDeck">.playerDeck
                 <p>Deck size:</p>
                 <p><span id="playerDeckSize">00</span></p>
             </div>
-            <div class="playerCardsWonTitle">P Cards Won:
-            </div>
-            <div class="playerCardsWonCount">
-                <p>00</p>
-            </div>
+
+
             <div class="playerCardsWonStack">.playerCardsWonStack
+                <p>Cards won:</p>
+                <p><span id="playerCardsWon">00</span></p>
             </div>
 
 

@@ -7,6 +7,13 @@ const flipButton = document.querySelector('.flip')
 const anteButton = document.querySelector('.ante')
 const opponentDeckSize = document.querySelector('#opponentDeckSize')
 const playerDeckSize = document.querySelector('#playerDeckSize')
+const playerCardsWonSelector = document.querySelector('#playerCardsWon')
+const opponentCardsWonSelector = document.querySelector('#opponentCardsWon')
+const compareOutcomeMessage = document.querySelector('#compareOutcome')
+const playerWarAnteCount = document.querySelector('#playerWarAnteCount')
+const opponentWarAnteCount = document.querySelector('#opponentWarAnteCount')
+
+
 flipButton.disabled = true
 anteButton.disabled = true
 
@@ -70,8 +77,6 @@ function splitShuffledMainDeck() {
 
 
 //4. flip card - 
-//pop card from top of player deck array
-//push to center object array
 function flipCard() {
 
     player.faceUpCard = player.deck[player.deck.length - 1]
@@ -79,56 +84,66 @@ function flipCard() {
     player.deck.pop()
     opponent.deck.pop()
     remakeDeckfromCardsWon()
+    cardCompare()
 
 
-    console.log("player played: " + player.faceUpCard)
-    console.log(player.deck)
-    console.log("opponent played: " + opponent.faceUpCard)
-    console.log(opponent.deck)
-    // console.log(opponent.faceUpCard)
+    playerDeckSize.textContent = player.deck.length
+    opponentDeckSize.textContent = opponent.deck.length
+    
 }
-// flipCard()
+
 
 function playerWins() {
     player.cardsWon.push(player.faceUpCard)
     player.cardsWon.push(opponent.faceUpCard)
-    console.log("player wins")
+    compareOutcomeMessage.innerHTML = "Player wins!!!!"
 
 }
 function opponentWins() {
     opponent.cardsWon.push(player.faceUpCard)
     opponent.cardsWon.push(opponent.faceUpCard)
-    console.log("opponent wins")
+    compareOutcomeMessage.innerHTML = "Opponent wins!!!!"
 
 }
 function playerWinsWar() {
     player.cardsWon.push(player.ante)
     player.cardsWon.push(opponent.ante)
+    playerWarAnteCount.textContent = "00"
+    opponentWarAnteCount.textContent = "00"
+    compareOutcomeMessage.innerHTML = "Player wins War!!!!"
 
 }
 function opponentWinsWar() {
     opponent.cardsWon.push(player.ante)
     opponent.cardsWon.push(opponent.ante)
+    playerWarAnteCount.textContent = "00"
+    opponentWarAnteCount.textContent = "00"
+    compareOutcomeMessage.innerHTML = "Opponent wins War!!!!"
 
 }
 function war() {
-    warAnte()
-    flipCard()
-    warCardCompare()
+    // flipButton.disabled = true
+    anteButton.disabled = false
+    // warAnte()
+    
 }
 //5. compare cards -
 //make card rank object? need to rank every card (j==10,Q==11,K==12,A==13)
 function warCardCompare() {
     let playerCard = parseInt(player.faceUpCard)
     let opponentCard = parseInt(opponent.faceUpCard)
+    playerWarAnteCount.textContent = player.ante.length
+    opponentWarAnteCount.textContent = opponent.ante.length
     if (playerCard == opponentCard) {
-        console.log("WAAARRR!!")
+        compareOutcomeMessage.innerHTML = "WaaRRR!!!!..? Click the ante button"
         war()
     } else if (playerCard > opponentCard) {
         playerWinsWar()
     } else {
         opponentWinsWar()
     }
+    playerCardsWonSelector.textContent = player.cardsWon.length
+    opponentCardsWonSelector.textContent = opponent.cardsWon.length
     return
 }
 
@@ -141,29 +156,41 @@ function cardCompare() {
     let playerCard = parseInt(player.faceUpCard)
     let opponentCard = parseInt(opponent.faceUpCard)
     if (playerCard == opponentCard) {
-        console.log("WAAARRR!!")
+        compareOutcomeMessage.innerHTML = "WaaRRR!!!!..? Click the ante button"
         war()
     } else if (playerCard > opponentCard) {
         playerWins()
     } else {
         opponentWins()
     }
+    playerCardsWonSelector.textContent = player.cardsWon.length
+    opponentCardsWonSelector.textContent = opponent.cardsWon.length
     return
 }
-cardCompare()
-console.log(player.cardsWon)
-console.log(opponent.cardsWon)
+
+// console.log(player.cardsWon)
+// console.log(opponent.cardsWon)
 
 //6. comparison tie trigger "war!"
 function warAnte() {
     player.ante = player.deck.splice(player.deck.length - 3, 3)
     opponent.ante = opponent.deck.splice(opponent.deck.length - 3, 3)
     remakeDeckfromCardsWon()
-    console.log(`player ante: ${player.ante}, opponent ante: ${opponent.ante}`)
+    playerWarAnteCount.textContent = player.ante
+    opponentWarAnteCount.textContent = opponent.ante
+    // console.log(`player ante: ${player.ante}, opponent ante: ${opponent.ante}`)
+    // anteButton.disabled = true
+    // flipButton.disabled = false
+    playerDeckSize.textContent = player.deck.length
+    opponentDeckSize.textContent = opponent.deck.length
+    flipCard()
+    warCardCompare()
+    
+    
     return
 }
-console.log(`player cards won: ${player.cardsWon}`)
-console.log(`opponent cards won: ${opponent.cardsWon}`)
+// console.log(`player cards won: ${player.cardsWon}`)
+// console.log(`opponent cards won: ${opponent.cardsWon}`)
 
 //XXXXXXX7. how to not push empty warAnte strings - if?
 
@@ -194,3 +221,4 @@ function winCondition() {
 startButton.addEventListener('click', shuffleUp(mainDeck))
 startButton.addEventListener('click', splitShuffledMainDeck)
 flipButton.addEventListener('click', flipCard)
+anteButton.addEventListener('click', warAnte)
