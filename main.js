@@ -201,7 +201,7 @@ function warCardCompare() {
     // playerWarAnteCount.textContent = player.ante.length
     // opponentWarAnteCount.textContent = opponent.ante.length
     if (playerCard == opponentCard) {
-        compareOutcomeMessage.innerHTML = "War AgaINNN!!!!..? Click the ante button"
+        compareOutcomeMessage.innerHTML = "War AgaINNN!!!!..?"
         war()
         flipButton.disabled = true
 
@@ -224,7 +224,7 @@ function cardCompare() {
     let playerCard = parseInt(player.faceUpCard)
     let opponentCard = parseInt(opponent.faceUpCard)
     if (playerCard == opponentCard) {
-        compareOutcomeMessage.innerHTML = "WaaRRR!!!!..? Click the ante button"
+        compareOutcomeMessage.innerHTML = "WaaRRR!!!!..?"
         war()
         flipButton.disabled = true
     } else if (playerCard > opponentCard) {
@@ -300,12 +300,16 @@ function remakeDeckfromCardsWon() {
 //win condition
 function winCondition() {
     if (player.deck + player.cardsWon <= 0) {
-        console.log("Opponent Wins!")
+        console.log("GAME WINNER: PLAYER!")
     } else {
-        console.log("Player Wins!")
+        console.log("GAME WINNER: OPPONENT!")
     }
+    startButton.disabled = false
+    flipButton.disabled = true
+    anteButton.disabled = true
+    warButton.disabled = true
 }
-
+winCondition()
 
 
 
