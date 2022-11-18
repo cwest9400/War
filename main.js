@@ -55,9 +55,9 @@ function winCondition() {
         clearMessage()
     }
 }
-//, ' club', ' diamond', ' heart'
+//, ' diamond', ' heart'
 function makeDeck() {
-    let cardType = [' spade']
+    let cardType = [' spade', ' club']
     let cards = ['2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14']
     let deck = []
     for (i = 0; i < cardType.length; i++) {
@@ -120,7 +120,6 @@ function flipCard() {
 }
 
 function warFlipCard() {
-    clearMessage()
     player.faceUpCard = player.deck[player.deck.length - 1]
     opponent.faceUpCard = opponent.deck[opponent.deck.length - 1]
     playerCardView.textContent = player.faceUpCard
@@ -140,6 +139,7 @@ function warFlipCard() {
     opponentDeckSize.textContent = opponent.deck.length
     
     winCondition()
+    clearMessage()
 }
 function clearMessage (){
     compareOutcomeMessage.innerHTML = ""
@@ -153,7 +153,7 @@ function playerWins() {
     compareOutcomeMessage.innerHTML = "Player had the high card!"
     playerCardView.textContent = player.faceUpCard
     opponentCardView.textContent = opponent.faceUpCard
-    clearMessage()
+    
     
     
     
@@ -166,7 +166,7 @@ function opponentWins() {
     compareOutcomeMessage.innerHTML = "Opponent had the high card!"
     playerCardView.textContent = player.faceUpCard
     opponentCardView.textContent = opponent.faceUpCard
-    clearMessage()
+    
     
     
 
@@ -187,7 +187,7 @@ function playerWinsWar() {
     opponentCardView.textContent = opponent.faceUpCard
     playerWarAnteCount.textContent = ""
     opponentWarAnteCount.textContent = ""
-    compareOutcomeMessage.innerHTML = "Player wins War!!!!"
+    compareOutcomeMessage.innerHTML = "player had the high card!"
 
     flipButton.disabled = false
     warButton.disabled = true
@@ -210,7 +210,7 @@ function opponentWinsWar() {
     opponentCardView.textContent = opponent.faceUpCard
     playerWarAnteCount.textContent = ""
     opponentWarAnteCount.textContent = ""
-    compareOutcomeMessage.innerHTML = "Player wins War!!!!"
+    compareOutcomeMessage.innerHTML = "Opponent had the high card!"
 
     flipButton.disabled = false
     warButton.disabled = true
