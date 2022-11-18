@@ -202,5 +202,8 @@ body {
     grid-row-start: 8;
     grid-row-end: 8;
 }
+.bigNumber {
+    font-size: x-large;
+}
 
 /* ids */
