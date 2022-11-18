@@ -5,6 +5,10 @@
 const startButton = document.querySelector('.startButton')
 const flipButton = document.querySelector('.flip')
 const anteButton = document.querySelector('.ante')
+const opponentDeckSize = document.querySelector('#opponentDeckSize')
+const playerDeckSize = document.querySelector('#playerDeckSize')
+flipButton.disabled = true
+anteButton.disabled = true
 
 
 
@@ -44,7 +48,6 @@ function shuffleUp(deck) {
         deck[i] = deck[randomIndex]
         deck[randomIndex] = randomCard
     }
-
 }
 
 let mainDeck = makeDeck()
@@ -59,8 +62,10 @@ function splitShuffledMainDeck() {
             opponent.deck.push(mainDeck[i])
         }
     }
-    console.log(player.deck)
-    console.log(opponent.deck)
+    startButton.disabled = true
+    playerDeckSize.textContent = player.deck.length
+    opponentDeckSize.textContent = opponent.deck.length
+    flipButton.disabled = false
 }
 
 
@@ -181,7 +186,6 @@ function winCondition() {
         console.log("Player Wins!")
     }
 }
-
 
 
 
