@@ -16,7 +16,7 @@ const playerWarAnteCount = document.querySelector('#playerWarAnteCount')
 const opponentWarAnteCount = document.querySelector('#opponentWarAnteCount')
 const playerCardView = document.querySelector('#playerCardView')
 const opponentCardView = document.querySelector('#opponentCardView')
-
+const winMessage = document.querySelector('#winMessage')
 flipButton.disabled = true
 anteButton.disabled = true
 warButton.disabled = true
@@ -38,9 +38,26 @@ let player = {
     cardsWon: [],
     ante: [],
 }
-
+function winCondition() {
+    if (player.deck.length + player.cardsWon.length <= 0) {
+        winMessage.textContent = " GAME WINNER: Opponent!"
+        startButton.disabled = false
+        flipButton.disabled = true
+        anteButton.disabled = true
+        warButton.disabled = true
+        clearMessage()
+    } else if (opponent.deck.length + opponent.cardsWon.length <= 0) {
+        winMessage.textContent = " GAME WINNER: PLAYER!"
+        startButton.disabled = false
+        flipButton.disabled = true
+        anteButton.disabled = true
+        warButton.disabled = true
+        clearMessage()
+    }
+}
+//, ' club', ' diamond', ' heart'
 function makeDeck() {
-    let cardType = [' spade', ' club', ' diamond', ' heart']
+    let cardType = [' spade']
     let cards = ['2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14']
     let deck = []
     for (i = 0; i < cardType.length; i++) {
@@ -77,33 +94,33 @@ function splitShuffledMainDeck() {
     playerDeckSize.textContent = player.deck.length
     opponentDeckSize.textContent = opponent.deck.length
     flipButton.disabled = false
+    winMessage.textContent = ""
+    compareOutcomeMessage.textContent = ""
 }
 
 
 //4. flip card - 
 function flipCard() {
-
     player.faceUpCard = player.deck[player.deck.length - 1]
     opponent.faceUpCard = opponent.deck[opponent.deck.length - 1]
     playerCardView.textContent = player.faceUpCard
     opponentCardView.textContent = opponent.faceUpCard
-
+    
     player.deck.pop()
     opponent.deck.pop()
-
-    setTimeout(function () { cardCompare() }, 700)
+    
+    setTimeout(function () { cardCompare() }, 900)
     if (player.deck.length <= 1 || opponent.deck.length <= 1) {
         setTimeout(function () { remakeDeckfromCardsWon() }, 1000)
     }
-
-
-
     playerDeckSize.textContent = player.deck.length
     opponentDeckSize.textContent = opponent.deck.length
-
+    winCondition()
+    clearMessage()
 }
+
 function warFlipCard() {
-    
+    clearMessage()
     player.faceUpCard = player.deck[player.deck.length - 1]
     opponent.faceUpCard = opponent.deck[opponent.deck.length - 1]
     playerCardView.textContent = player.faceUpCard
@@ -112,37 +129,47 @@ function warFlipCard() {
     player.deck.pop()
     opponent.deck.pop()
     
-
+    
     setTimeout(function () { warCardCompare() }, 700)
     if (player.deck.length <= 1 || opponent.deck.length <= 1) {
         setTimeout(function () { remakeDeckfromCardsWon() }, 1000)
     }
-
-
+    
+    
     playerDeckSize.textContent = player.deck.length
     opponentDeckSize.textContent = opponent.deck.length
-
+    
+    winCondition()
 }
-
+function clearMessage (){
+    compareOutcomeMessage.innerHTML = ""
+}
 
 function playerWins() {
     player.cardsWon.push(player.faceUpCard)
     player.cardsWon.push(opponent.faceUpCard)
     player.faceUpCard = ""
     opponent.faceUpCard = ""
-    compareOutcomeMessage.innerHTML = "Player wins!!!!"
+    compareOutcomeMessage.innerHTML = "Player had the high card!"
     playerCardView.textContent = player.faceUpCard
     opponentCardView.textContent = opponent.faceUpCard
-
+    clearMessage()
+    
+    
+    
 }
 function opponentWins() {
     opponent.cardsWon.push(player.faceUpCard)
     opponent.cardsWon.push(opponent.faceUpCard)
     player.faceUpCard = ""
     opponent.faceUpCard = ""
-    compareOutcomeMessage.innerHTML = "Opponent wins!!!!"
+    compareOutcomeMessage.innerHTML = "Opponent had the high card!"
     playerCardView.textContent = player.faceUpCard
     opponentCardView.textContent = opponent.faceUpCard
+    clearMessage()
+    
+    
+
 
 }
 function playerWinsWar() {
@@ -164,6 +191,8 @@ function playerWinsWar() {
 
     flipButton.disabled = false
     warButton.disabled = true
+    
+
 
 }
 function opponentWinsWar() {
@@ -185,6 +214,8 @@ function opponentWinsWar() {
 
     flipButton.disabled = false
     warButton.disabled = true
+    
+
 
 }
 function war() {
@@ -212,6 +243,8 @@ function warCardCompare() {
     }
     playerCardsWonSelector.textContent = player.cardsWon.length
     opponentCardsWonSelector.textContent = opponent.cardsWon.length
+
+
     return
 }
 
@@ -234,6 +267,7 @@ function cardCompare() {
     }
     playerCardsWonSelector.textContent = player.cardsWon.length
     opponentCardsWonSelector.textContent = opponent.cardsWon.length
+
     return
 }
 
@@ -248,7 +282,7 @@ function warAnte() {
     if (opponent.deck.length <= 3) {
         setTimeout(function () { remakeDeckfromCardsWon() }, 1000)
     }
-    
+
     player.ante = player.deck.splice(player.deck.length - 3, 3)
     opponent.ante = opponent.deck.splice(opponent.deck.length - 3, 3)
     player.ante.push(player.faceUpCard)
@@ -259,23 +293,19 @@ function warAnte() {
     opponentWarAnteCount.textContent = opponent.ante.length
     playerCardView.textContent = ""
     opponentCardView.textContent = ""
-    
+
     // console.log(`player ante: ${player.ante}, opponent ante: ${opponent.ante}`)
     anteButton.disabled = true
     // flipButton.disabled = false
     playerDeckSize.textContent = player.deck.length
     opponentDeckSize.textContent = opponent.deck.length
     warButton.disabled = false
-    
+
     // setTimeout(function () { warCardCompare() }, 700)
 
 
     return
 }
-// console.log(`player cards won: ${player.cardsWon}`)
-// console.log(`opponent cards won: ${opponent.cardsWon}`)
-
-//XXXXXXX7. how to not push empty warAnte strings - if?
 
 //8. when deck runs out - shuffle cardsWon into deck
 function remakeDeckfromCardsWon() {
@@ -284,34 +314,14 @@ function remakeDeckfromCardsWon() {
         player.cardsWon = []
         playerCardsWonSelector.textContent = player.cardsWon.length
         playerDeckSize.textContent = player.deck.length
-        // compareOutcomeMessage.textContent = "Player is out of cards - Time to reshuffle"
     }
     if (opponent.deck <= 0) {
         opponent.deck.push(...opponent.cardsWon)
         opponent.cardsWon = []
         opponentCardsWonSelector.textContent = opponent.cardsWon.length
         opponentDeckSize.textContent = opponent.deck.length
-        // compareOutcomeMessage.textContent = "Opponent is out of cards - Time to reshuffle"
     }
-
 }
-
-
-//win condition
-function winCondition() {
-    if (player.deck + player.cardsWon <= 0) {
-        console.log("GAME WINNER: PLAYER!")
-    } else {
-        console.log("GAME WINNER: OPPONENT!")
-    }
-    startButton.disabled = false
-    flipButton.disabled = true
-    anteButton.disabled = true
-    warButton.disabled = true
-}
-winCondition()
-
-
 
 //9. identify dom elements & listeners
 startButton.addEventListener('click', shuffleUp(mainDeck))
