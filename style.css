@@ -4,18 +4,26 @@ body {
     user-select: none;
 }
 
+.container {
+    display: grid;
+}
+
 .playArea {
     background-color: rgb(168, 168, 168);
-    width: 800px;
-    height: 600px;
+    width: auto;
+    height: auto;
     margin: auto;
     display: grid;
-    grid-template-columns: 100px 100px 100px 100px 100px 100px 100px;
-    grid-template-rows: auto 150px 40px 150px 40px auto;
+    grid-template-columns: 100px 100px 100px 100px;
+    grid-template-rows: 150px 150px 150px;
+    column-gap: 20px;
+    row-gap: 20px;
+
+
 }
 
 .opponentCardsWonStack {
-    border: solid;
+    
     width: 100px;
     height: 150px;
     border-radius: 3px;
@@ -23,14 +31,13 @@ body {
     text-align: center;
     color: rgb(108, 108, 108);
     background-color: beige;
-    grid-column-start: 2;
-    grid-column-end: 3;
-    grid-row-start: 2;
-    grid-row-end: 3;
+    grid-column: 1 / span 1;
+    grid-row: 1 / span 1;
+
 }
 
 .opponentDeck {
-    border: solid;
+    
     width: 100px;
     height: 150px;
     border-radius: 3px;
@@ -38,154 +45,118 @@ body {
     text-align: center;
     color: rgb(108, 108, 108);
     background-color: beige;
-    grid-column-start: 4;
-    grid-column-end: 5;
-    grid-row-start: 2;
-    grid-row-end: 3;
+    grid-column: 2 / span 1;
+    grid-row: 1 / span 1;
 }
 
 .opponentCardsWonTitle {
     width: 100;
     height: 25;
-    grid-column-start: 2;
-    grid-column-end: 2;
-    grid-row-start: 3;
-    grid-row-end: 3;
+    grid-column: 1 / span 1;
+    grid-row: 1 / span 1;
 }
 
 .opponentCardsWonCount {
     width: 100;
     height: 25;
-    grid-column-start: 2;
-    grid-column-end: 2;
-    grid-row-start: 3;
-    grid-row-end: 3;
+    grid-column: 1 / span 1;
+    grid-row: 1 / span 1;
 }
 
 .opponentWarAnte {
-    border: solid;
-    width: 100px;
+        width: 100px;
     height: 150px;
     border-radius: 3px;
     font-size: 60%;
     text-align: center;
     color: rgb(108, 108, 108);
     background-color: beige;
-    grid-column-start: 1;
-    grid-column-end: 1;
-    grid-row-start: 4;
-    grid-row-end: 4;
+    grid-column: 1 / span 1;
+    grid-row: 2 / span 1;
 }
 
 .opponentFaceUpCard {
-    border: solid;
-    width: 100px;
+        width: 100px;
     height: 150px;
     border-radius: 3px;
     font-size: 60%;
     text-align: center;
     color: rgb(108, 108, 108);
     background-color: beige;
-    grid-column-start: 4;
-    grid-column-end: 3;
-    grid-row-start: 4;
-    grid-row-end: 4;
+    grid-column: 2 / span 1;
+    grid-row: 2 / span 1;
 }
 
 .playerFaceUpCard {
-    border: solid;
-    width: 100px;
+        width: 100px;
     height: 150px;
     border-radius: 3px;
     font-size: 60%;
     text-align: center;
     color: rgb(108, 108, 108);
     background-color: beige;
-    grid-column-start: 5;
-    grid-column-end: 6;
-    grid-row-start: 4;
-    grid-row-end: 4;
+    grid-column: 3 / span 1;
+    grid-row: 2 / span 1;
 }
 
 .playerWarAnte {
-    border: solid;
-    width: 100px;
+       width: 100px;
     height: 150px;
     border-radius: 3px;
     font-size: 60%;
     text-align: center;
     color: rgb(108, 108, 108);
     background-color: beige;
-    grid-column-start: 7;
-    grid-column-end: 7;
-    grid-row-start: 4;
-    grid-row-end: 4;
+    grid-column: 4 / span 1;
+    grid-row: 2 / span 1;
 }
 
 .ante {
-    grid-column-start: 4;
-    grid-column-end: 5;
-    grid-row-start: 7;
-    grid-row-end: 7;
-    width: 40px;
+        width: 40px;
     height: 20px;
 }
 
 .flip {
-    grid-column-start: 4;
-    grid-column-end: 5;
-    grid-row-start: 7;
-    grid-row-end: 7;
-    width: 40px;
+        width: 40px;
     height: 20px;
 }
 
 .playerDeck {
-    border: solid;
-    width: 100px;
+        width: 100px;
     height: 150px;
     border-radius: 3px;
     font-size: 60%;
     text-align: center;
     color: rgb(108, 108, 108);
     background-color: beige;
-    grid-column-start: 4;
-    grid-column-end: 5;
-    grid-row-start: 8;
-    grid-row-end: 8;
+    grid-column: 3 / span 1;
+    grid-row: 3 / span 1;
 }
 
 .playerCardsWonTitle {
     width: 100;
     height: 25;
-    grid-column-start: 6;
-    grid-column-end: 6;
-    grid-row-start: 7;
-    grid-row-end: 7;
+    grid-column: 4 / span 1;
+    grid-row: 3 / span 1;
 }
 
 .playerCardsWonCount {
     width: 100;
     height: 25;
-    grid-column-start: 6;
-    grid-column-end: 6;
-    grid-row-start: 7;
-    grid-row-end: 7;
+    grid-column: 4 / span 1;
+    grid-row: 3 / span 1;
 }
 
 .playerCardsWonStack {
-    border: solid;
-    width: 100px;
+       width: 100px;
     height: 150px;
     border-radius: 3px;
     font-size: 60%;
     text-align: center;
     color: rgb(108, 108, 108);
     background-color: beige;
-    grid-column-start: 6;
-    grid-column-end: 7;
-    grid-row-start: 8;
-    grid-row-end: 8;
+    grid-column: 4 / span 1;
+    grid-row: 3 / span 1;
 }
 
 .bigNumber {
