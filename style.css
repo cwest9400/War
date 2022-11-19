@@ -1,12 +1,9 @@
-/* elements */
 body {
     background-color: azure;
     color: rgb(0, 0, 0);
-    /* user-select: none; */
-
+    user-select: none;
 }
 
-/* classes */
 .playArea {
     background-color: rgb(168, 168, 168);
     width: 800px;
@@ -15,7 +12,6 @@ body {
     display: grid;
     grid-template-columns: 100px 100px 100px 100px 100px 100px 100px;
     grid-template-rows: auto 150px 40px 150px 40px auto;
-
 }
 
 .opponentCardsWonStack {
@@ -31,7 +27,6 @@ body {
     grid-column-end: 3;
     grid-row-start: 2;
     grid-row-end: 3;
-
 }
 
 .opponentDeck {
@@ -47,7 +42,6 @@ body {
     grid-column-end: 5;
     grid-row-start: 2;
     grid-row-end: 3;
-
 }
 
 .opponentCardsWonTitle {
@@ -57,7 +51,6 @@ body {
     grid-column-end: 2;
     grid-row-start: 3;
     grid-row-end: 3;
-
 }
 
 .opponentCardsWonCount {
@@ -67,7 +60,6 @@ body {
     grid-column-end: 2;
     grid-row-start: 3;
     grid-row-end: 3;
-
 }
 
 .opponentWarAnte {
@@ -83,7 +75,6 @@ body {
     grid-column-end: 1;
     grid-row-start: 4;
     grid-row-end: 4;
-
 }
 
 .opponentFaceUpCard {
@@ -99,7 +90,6 @@ body {
     grid-column-end: 3;
     grid-row-start: 4;
     grid-row-end: 4;
-
 }
 
 .playerFaceUpCard {
@@ -115,7 +105,6 @@ body {
     grid-column-end: 6;
     grid-row-start: 4;
     grid-row-end: 4;
-
 }
 
 .playerWarAnte {
@@ -131,7 +120,6 @@ body {
     grid-column-end: 7;
     grid-row-start: 4;
     grid-row-end: 4;
-
 }
 
 .ante {
@@ -141,7 +129,6 @@ body {
     grid-row-end: 7;
     width: 40px;
     height: 20px;
-
 }
 
 .flip {
@@ -175,7 +162,6 @@ body {
     grid-column-end: 6;
     grid-row-start: 7;
     grid-row-end: 7;
-
 }
 
 .playerCardsWonCount {
@@ -185,7 +171,6 @@ body {
     grid-column-end: 6;
     grid-row-start: 7;
     grid-row-end: 7;
-
 }
 
 .playerCardsWonStack {
@@ -202,8 +187,7 @@ body {
     grid-row-start: 8;
     grid-row-end: 8;
 }
+
 .bigNumber {
     font-size: x-large;
 }
-
-/* ids */
