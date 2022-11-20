@@ -103,8 +103,8 @@ function flipCard() {
     }
     playerDeckSize.textContent = player.deck.length
     opponentDeckSize.textContent = opponent.deck.length
-    winCondition()
-    clearMessage()
+    // winCondition()
+    // clearMessage()
 }
 
 function warFlipCard() {
@@ -120,8 +120,8 @@ function warFlipCard() {
     }
     playerDeckSize.textContent = player.deck.length
     opponentDeckSize.textContent = opponent.deck.length
-    winCondition()
-    clearMessage()
+    // winCondition()
+    // clearMessage()
 }
 
 function clearMessage() {
@@ -136,6 +136,7 @@ function playerWins() {
     compareOutcomeMessage.innerHTML = "Player had the high card!"
     playerCardView.textContent = player.faceUpCard
     opponentCardView.textContent = opponent.faceUpCard
+    winCondition()
 }
 
 function opponentWins() {
@@ -146,6 +147,7 @@ function opponentWins() {
     compareOutcomeMessage.innerHTML = "Opponent had the high card!"
     playerCardView.textContent = player.faceUpCard
     opponentCardView.textContent = opponent.faceUpCard
+    winCondition()
 }
 
 function playerWinsWar() {

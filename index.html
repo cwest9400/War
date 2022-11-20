@@ -5,50 +5,55 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mitr:wght@300;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./style.css">
     <script src="./main.js" defer></script>
     <title>WaR!!</title>
 </head>
+<nav>
+    <h2>WaR</h2>
+</nav>
 
 <body>
-    <button class="startButton">start</button>
-    <button class="flip">Flip</button>
-    <button class="ante">Ante</button>
-    <button class="warButton">War</button>
+    <div class="controls">
+        <button class="startButton">Start</button>
+        <button class="flip">Flip</button>
+        <button class="ante">Ante</button>
+        <button class="warButton">War</button>
+    </div>
     <div class="outcome">Battle Message: <span id="compareOutcome"></span><span id="winMessage"></span></div>
-
     <div class="container">
         <div class="playArea">
-            <div class="opponentCardsWonStack">
-                <img class="img" src="cardimgs/card_back.png" alt="card back">
-                .opponentCardsWonStack
+            <div class="opponentCardsWonStack">Opponent's Pile
                 <p>Cards won:</p>
                 <p><span class="bigNumber" id="opponentCardsWon"></span></p>
             </div>
-            <div class="opponentDeck"><img class="img" src="cardimgs/card_back.png" alt="card back">.opponentDeck
+            <div class="opponentDeck">Opponent's Deck
                 <p>Deck size:</p>
                 <p><span class="bigNumber" id="opponentDeckSize"></span></p>
             </div>
-            <div class="opponentWarAnte">.opponentWarAnte
+            <div class="opponentWarAnte">Opponent's Ante
                 <p>Ante count:</p>
                 <p><span class="bigNumber" id="opponentWarAnteCount"></span></p>
             </div>
-            <div class="opponentFaceUpCard">.opponentFaceUpCard
+            <div class="opponentFaceUpCard">Opponent's Card
                 <p class="bigNumber" id="opponentCardView"></p>
             </div>
-            <div class="playerFaceUpCard">.playerFaceUpCard
+            <div class="playerFaceUpCard">Player's Card
                 <p class="bigNumber" id="playerCardView"></p>
             </div>
-            <div class="playerWarAnte">.playerWarAnte
+            <div class="playerWarAnte">Player's Ante
                 <p>Ante count:</p>
                 <p><span class="bigNumber" id="playerWarAnteCount"></span></p>
             </div>
             <div class="flipAnteButtonContainer"></div>
-            <div class="playerDeck">.playerDeck
+            <div class="playerDeck">Player's Deck
                 <p>Deck size:</p>
                 <p><span class="bigNumber" id="playerDeckSize"></span></p>
             </div>
-            <div class="playerCardsWonStack">.playerCardsWonStack
+            <div class="playerCardsWonStack">Player's Pile
                 <p>Cards won:</p>
                 <p><span class="bigNumber" id="playerCardsWon"></span></p>
             </div>
