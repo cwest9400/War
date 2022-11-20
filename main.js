@@ -39,19 +39,18 @@ function winCondition() {
         flipButton.disabled = true
         anteButton.disabled = true
         warButton.disabled = true
-        clearMessage()
+        
     } else if (opponent.deck.length + opponent.cardsWon.length <= 0) {
         winMessage.textContent = " GAME WINNER: PLAYER!"
         startButton.disabled = false
         flipButton.disabled = true
         anteButton.disabled = true
         warButton.disabled = true
-        clearMessage()
     }
 }
 
 function makeDeck() {
-    let cardType = [' spade', ' club']
+    let cardType = [' S', ' C']
     let cards = ['2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14']
     let deck = []
     for (i = 0; i < cardType.length; i++) {
@@ -103,8 +102,6 @@ function flipCard() {
     }
     playerDeckSize.textContent = player.deck.length
     opponentDeckSize.textContent = opponent.deck.length
-    // winCondition()
-    // clearMessage()
 }
 
 function warFlipCard() {
@@ -120,12 +117,6 @@ function warFlipCard() {
     }
     playerDeckSize.textContent = player.deck.length
     opponentDeckSize.textContent = opponent.deck.length
-    // winCondition()
-    // clearMessage()
-}
-
-function clearMessage() {
-    compareOutcomeMessage.innerHTML = ""
 }
 
 function playerWins() {
@@ -166,6 +157,7 @@ function playerWinsWar() {
     compareOutcomeMessage.innerHTML = "player had the high card!"
     flipButton.disabled = false
     warButton.disabled = true
+    winCondition()
 }
 
 function opponentWinsWar() {
@@ -184,6 +176,7 @@ function opponentWinsWar() {
     compareOutcomeMessage.innerHTML = "Opponent had the high card!"
     flipButton.disabled = false
     warButton.disabled = true
+    winCondition()
 }
 
 function war() {

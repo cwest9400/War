@@ -21,7 +21,7 @@ Try the game -
 4. Try to win all the cards.        
 
 ## Next Steps:
-- Additional CSS styling - play area and cards.
+- Additional CSS styling - play area and card visuals.
 - Card animations - Cards sliding from zone to zone.
 - Button updates - Reduce the number of buttons that the user needs to interact with.
 - The ability to ante more that 3 cards at a time.

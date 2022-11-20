@@ -1,22 +1,45 @@
 nav {
     text-align: center;
 }
+
 body {
     background-color: azure;
     color: rgb(0, 0, 0);
     user-select: none;
     font-family: 'Mitr', sans-serif;
 }
+
 .controls {
     display: flex;
     flex-direction: row;
     justify-content: center;
     gap: 10px;
 }
+
+.startButton {
+    width: 40px;
+    height: 20px;
+}
+
+.flip {
+    width: 40px;
+    height: 20px;
+}
+
+.ante {
+    width: 40px;
+    height: 20px;
+}
+
+.warButton {
+    width: 40px;
+    height: 20px;
+}
+
 .outcome {
     margin: 10px 0 10px 200px;
-
 }
+
 .container {
     display: grid;
 }
@@ -57,8 +80,6 @@ body {
     background-color: rgb(201, 45, 45);
     grid-column: 2 / span 1;
     grid-row: 1 / span 1;
-
-
 }
 
 .opponentWarAnte {
@@ -68,7 +89,7 @@ body {
     font-size: 80%;
     width: 100px;
     height: 150px;
-    text-align: center; 
+    text-align: center;
     grid-column: 1 / span 1;
     grid-row: 2 / span 1;
 }
@@ -80,7 +101,7 @@ body {
     font-size: 80%;
     width: 100px;
     height: 150px;
-    text-align: center;   
+    text-align: center;
     grid-column: 2 / span 1;
     grid-row: 2 / span 1;
 }
@@ -107,16 +128,6 @@ body {
     text-align: center;
     grid-column: 4 / span 1;
     grid-row: 2 / span 1;
-}
-
-.ante {
-    width: 40px;
-    height: 20px;
-}
-
-.flip {
-    width: 40px;
-    height: 20px;
 }
 
 .playerDeck {
