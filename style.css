@@ -14,12 +14,18 @@ body {
     height: auto;
     margin: auto;
     display: grid;
+    padding: 20px;
     grid-template-columns: 100px 100px 100px 100px;
     grid-template-rows: 150px 150px 150px;
     column-gap: 20px;
     row-gap: 20px;
 
 
+}
+
+.img {
+    max-width: 100%;
+    max-height: auto;
 }
 
 .opponentCardsWonStack {
@@ -33,6 +39,7 @@ body {
     background-color: beige;
     grid-column: 1 / span 1;
     grid-row: 1 / span 1;
+    position: relative
 
 }
 
@@ -49,19 +56,19 @@ body {
     grid-row: 1 / span 1;
 }
 
-.opponentCardsWonTitle {
+/* .opponentCardsWonTitle {
     width: 100;
     height: 25;
     grid-column: 1 / span 1;
     grid-row: 1 / span 1;
-}
+} */
 
-.opponentCardsWonCount {
+/* .opponentCardsWonCount {
     width: 100;
     height: 25;
     grid-column: 1 / span 1;
     grid-row: 1 / span 1;
-}
+} */
 
 .opponentWarAnte {
         width: 100px;
@@ -161,4 +168,6 @@ body {
 
 .bigNumber {
     font-size: x-large;
+    position: absolute;
 }
+
