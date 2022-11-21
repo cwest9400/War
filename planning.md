@@ -1,7 +1,7 @@
 Game: War
 
 
-Game overview // planning : pseudo
+### Game overview // planning : pseudo
 
 1) User starts game - click start button
     1. deck shuffles 52 cards (randomized)
@@ -29,3 +29,6 @@ TIE - In case of tie, WaR is initiated. A tie is when both the user and the oppo
 8) repeat war cycle until there are not ties.
 9) return to normal play (flip a card)
 
+### WIREFRAME
+
+![WireFrame](screen_caps/wireframe.png)

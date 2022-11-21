@@ -26,3 +26,60 @@ Try the game -
 - Button updates - Reduce the number of buttons that the user needs to interact with.
 - The ability to ante more that 3 cards at a time.
 - game timer
+
+### Code Snippets
+
+HTML
+```
+<div class="container">
+    <div class="playArea">
+      //ALL The card placeholders are in here.      
+    </div>
+</div>
+```
+CSS
+```
+.container {
+    display: grid;
+}
+
+.playArea {
+    background-color: rgb(168, 168, 168);
+    width: auto;
+    height: auto;
+    margin: auto;
+    display: grid;
+    padding: 20px;
+    grid-template-columns: 100px 100px 100px 100px;
+    grid-template-rows: 150px 150px 150px;
+    column-gap: 20px;
+    row-gap: 20px;
+}
+```
+
+JAVASCRIPT - Flip Button
+```
+function flipCard() {
+    player.faceUpCard = player.deck[player.deck.length - 1]
+    opponent.faceUpCard = opponent.deck[opponent.deck.length - 1]
+    playerCardView.textContent = player.faceUpCard
+    opponentCardView.textContent = opponent.faceUpCard
+    player.deck.pop()
+    opponent.deck.pop()
+    setTimeout(function () { cardCompare() }, 900)
+    if (player.deck.length <= 1 || opponent.deck.length <= 1) {
+        setTimeout(function () { remakeDeckfromCardsWon() }, 1000)
+    }
+    playerDeckSize.textContent = player.deck.length
+    opponentDeckSize.textContent = opponent.deck.length
+}
+```
+### Challenges/TakeAways
+
+Dedicating brain power on the most important pieces - Focus on the step at hand, not on how to make something else work later down the road.
+
+Ex: Before worrying about how to compare cards - we should shuffle the deck first.
+
+Planning is KEY - starting broad(because you shouldn't know the details yet) and working inward later.
+
+
