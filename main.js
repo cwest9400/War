@@ -51,7 +51,7 @@ function winCondition() {
 
 function makeDeck() {
     let cardType = [' S', ' C']
-    let cards = ['2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14']
+    let cards = ['2', '3', '4', '5', '6']
     let deck = []
     for (i = 0; i < cardType.length; i++) {
         for (j = 0; j < cards.length; j++) {
